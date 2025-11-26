@@ -91,6 +91,7 @@ albindavidc-mathmind/
 * TypeScript
 * TailwindCSS
 * Vite
+* PWA
 
 ### **AI**
 
