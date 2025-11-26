@@ -123,10 +123,39 @@ const App: React.FC = () => {
            </button>
         </div>
 
+        {/* Mode Toggle Tabs - Compact & High Visibility */}
+        <div className="px-4 pt-4 z-20 relative">
+          <div className="bg-gray-800 rounded-xl p-1 flex relative border border-gray-700 shadow-lg">
+            {/* Sliding background with dynamic color */}
+            <div 
+              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-lg shadow-md transition-all duration-300 ease-out
+                ${mode === CalculatorMode.AI 
+                  ? 'translate-x-[100%] ml-1 bg-neon-purple' 
+                  : 'translate-x-0 bg-neon-blue'}`}
+            ></div>
+            
+            <button 
+              onClick={() => setMode(CalculatorMode.STANDARD)}
+              className={`flex-1 relative z-10 py-1 text-xs font-bold rounded-lg transition-colors text-center 
+                ${mode === CalculatorMode.STANDARD ? 'text-gray-900' : 'text-gray-400 hover:text-gray-200'}`}
+            >
+              Standard
+            </button>
+            <button 
+              onClick={() => setMode(CalculatorMode.AI)}
+              className={`flex-1 relative z-10 py-1 text-xs font-bold rounded-lg transition-colors text-center flex items-center justify-center gap-2 
+                ${mode === CalculatorMode.AI ? 'text-gray-900' : 'text-gray-400 hover:text-gray-200'}`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              AI Solver
+            </button>
+          </div>
+        </div>
+
         {/* Display Area */}
         <div 
             ref={displayRef}
-            className={`flex-shrink-0 p-6 flex flex-col justify-end text-right transition-all duration-300 ${mode === CalculatorMode.AI ? 'h-48' : 'h-40'}`}
+            className={`flex-shrink-0 px-6 pb-6 pt-4 flex flex-col justify-end text-right transition-all duration-300 ${mode === CalculatorMode.AI ? 'h-48' : 'h-40'}`}
         >
           {/* Input Echo */}
           <div className="text-gray-400 text-lg mb-2 font-mono break-words h-12 overflow-hidden text-ellipsis opacity-75">
@@ -146,33 +175,8 @@ const App: React.FC = () => {
           )}
         </div>
 
-        {/* Mode Toggle Tabs */}
-        <div className="px-4 pb-2">
-          <div className="bg-gray-800/50 p-1 rounded-xl flex relative">
-            {/* Sliding background */}
-            <div 
-              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-gray-700 rounded-lg shadow transition-all duration-300 ease-out
-                ${mode === CalculatorMode.AI ? 'translate-x-[100%] ml-1' : 'translate-x-0'}`}
-            ></div>
-            
-            <button 
-              onClick={() => setMode(CalculatorMode.STANDARD)}
-              className={`flex-1 relative z-10 py-2 text-sm font-semibold rounded-lg transition-colors text-center ${mode === CalculatorMode.STANDARD ? 'text-white' : 'text-gray-400'}`}
-            >
-              Standard
-            </button>
-            <button 
-              onClick={() => setMode(CalculatorMode.AI)}
-              className={`flex-1 relative z-10 py-2 text-sm font-semibold rounded-lg transition-colors text-center flex items-center justify-center gap-2 ${mode === CalculatorMode.AI ? 'text-white' : 'text-gray-400'}`}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              AI Solver
-            </button>
-          </div>
-        </div>
-
         {/* Dynamic Content Area */}
-        <div className="flex-1 bg-gray-900 overflow-hidden relative">
+        <div className="flex-1 bg-gray-900 overflow-hidden relative border-t border-gray-800">
             {mode === CalculatorMode.STANDARD ? (
                 <div className="h-full flex flex-col justify-end">
                     <Calculator 
