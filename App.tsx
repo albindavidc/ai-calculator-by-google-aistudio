@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CalculatorMode, HistoryItem, MathResponse } from './types';
 import Calculator from './components/Calculator';
 import AIInterface from './components/AIInterface';

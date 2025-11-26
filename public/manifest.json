@@ -1,0 +1,18 @@
+{
+  "name": "Gemini MathMind",
+  "short_name": "MathMind",
+  "description": "AI Powered Hybrid Calculator",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
